@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch0p0vcac2fss"]
+
+[ext_resource type="Script" uid="uid://d31gwq41k6ki3" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cbbq3mg2517gp" path="res://cat.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Cat" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_0xm2m")]
+
+[node name="Checkin_Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Checkin_Timer" to="." method="_on_checkin_timer_timeout"]

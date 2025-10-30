@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://wxn3ut7dsfck"]
+
+[ext_resource type="Script" uid="uid://nrjpusjm8xoq" path="res://timer_menu.gd" id="1_bicxk"]
+
+[node name="Timer" type="Window"]
+oversampling_override = 1.0
+title = "timer"
+position = Vector2i(0, 36)
+size = Vector2i(250, 150)
+unresizable = true
+always_on_top = true
+accessibility_name = "Notepad"
+script = ExtResource("1_bicxk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer_Lineedit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Timer_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "duration"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer_Start" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "start"
+
+[node name="Timer_Stop" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "pawse"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Mode_Button" type="Button" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "mode"
+
+[node name="Pomodoro_Button" type="Button" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "pomodoro"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "ready!"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Timer_Start" to="." method="_on_timer_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Timer_Stop" to="." method="_on_timer_stop_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/Mode_Button" to="." method="_on_mode_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/Pomodoro_Button" to="." method="_on_pomodoro_button_pressed"]

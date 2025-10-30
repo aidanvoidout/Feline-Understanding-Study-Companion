@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdfa60da6u4va"]
+
+[ext_resource type="Script" uid="uid://bbh3l2p5is5lv" path="res://settings_menu.gd" id="1_ufg0w"]
+
+[node name="SettingsMenu" type="Window"]
+oversampling_override = 1.0
+title = "settings"
+position = Vector2i(0, 36)
+size = Vector2i(250, 80)
+unresizable = true
+script = ExtResource("1_ufg0w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 248.0
+offset_bottom = 118.0
+
+[node name="AlphaOption" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/AlphaOption"]
+layout_mode = 2
+text = "alpha: "
+
+[node name="AlphaSlider" type="HSlider" parent="VBoxContainer/AlphaOption"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.2
+max_value = 1.0
+step = 0.1
+value = 0.2
+tick_count = 10
+
+[node name="SmallerOption" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SmallerOption"]
+layout_mode = 2
+text = "smaller cat"
+
+[node name="SmallerButton" type="CheckButton" parent="VBoxContainer/SmallerOption"]
+layout_mode = 2
+
+[node name="MovementOption" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MovementOption"]
+layout_mode = 2
+text = "reduced movement"
+
+[node name="MovementButton" type="CheckButton" parent="VBoxContainer/MovementOption"]
+layout_mode = 2
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="value_changed" from="VBoxContainer/AlphaOption/AlphaSlider" to="." method="_on_alpha_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/SmallerOption/SmallerButton" to="." method="_on_smaller_button_toggled"]

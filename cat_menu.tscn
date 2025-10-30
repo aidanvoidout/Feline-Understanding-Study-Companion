@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://det0ul7u7rbxx"]
+
+[ext_resource type="Script" uid="uid://btvy8jasvumib" path="res://cat_menu.gd" id="1_dnif8"]
+
+[node name="CatMenu" type="Window"]
+oversampling_override = 1.0
+title = "menu"
+position = Vector2i(0, 36)
+size = Vector2i(250, 40)
+unresizable = true
+force_native = true
+script = ExtResource("1_dnif8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimerButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "timer"
+
+[node name="NotepadButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "notepad"
+
+[node name="SettingsButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "settings"
+
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="HBoxContainer/TimerButton" to="." method="_on_timer_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NotepadButton" to="." method="_on_notepad_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

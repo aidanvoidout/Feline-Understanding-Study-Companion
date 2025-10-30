@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://coy2pcijngo1o"]
+
+[ext_resource type="Script" uid="uid://xh6rvka577ok" path="res://check_in.gd" id="1_i5j1w"]
+[ext_resource type="FontFile" uid="uid://covrm28qbwos3" path="res://SHPinscher-Regular.otf" id="2_kfne3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5j1w"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CheckIn" type="Window"]
+oversampling_override = 1.0
+title = "regular check-in!"
+position = Vector2i(0, 36)
+size = Vector2i(200, 100)
+unresizable = true
+borderless = true
+always_on_top = true
+accessibility_name = "Notepad"
+script = ExtResource("1_i5j1w")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 200.0
+offset_bottom = 100.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i5j1w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kfne3")
+theme_override_font_sizes/font_size = 18
+text = "Remember to take frequent breaks!"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kfne3")
+theme_override_font_sizes/font_size = 16
+text = "yes boss!"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
